@@ -75,12 +75,12 @@
 						<artifactId>contrast-maven-plugin</artifactId>
 						<version>2.2</version>
 						<executions>
-							<execution>
+							<!-- <execution>
 								<id>install-contrast-jar</id>
 								<goals>
 									<goal>install</goal>
 								</goals>
-							</execution>
+							</execution> -->
 							<execution>
 								<id>verify-with-contrast</id>
 								<phase>post-integration-test</phase>
@@ -95,10 +95,11 @@
 							<serviceKey>${env.CONTRAST_MAVEN_SERVICEKEY}</serviceKey>
 							<apiUrl>${env.CONTRAST_MAVEN_TEAMSERVERURL}</apiUrl>
 							<orgUuid>${env.CONTRAST_MAVEN_ORGUUID}</orgUuid>
-							<appName>provider-directory</appName>
-							<serverName>venus</serverName>
+							<appName>provider-search</appName>
+							<serverName>Sourabhs-MacBook-Pro.local</serverName>
 							<serverPath>/provider</serverPath>
 							<minSeverity>Note</minSeverity>
+							<apiUrl>https://apptwo.contrastsecurity.com/Contrast/api</apiUrl>
 						</configuration>
 					</plugin>
 				</plugins>
