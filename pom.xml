@@ -97,7 +97,7 @@
 							<orgUuid>${env.CONTRAST_MAVEN_ORGUUID}</orgUuid>
 							<appName>provider-search</appName>
 							<serverName>Sourabhs-MacBook-Pro.local</serverName>
-							<serverPath>/provider</serverPath>
+							<serverPath>/providerServer</serverPath>
 							<minSeverity>Note</minSeverity>
 							<apiUrl>https://apptwo.contrastsecurity.com/Contrast/api</apiUrl>
 						</configuration>
