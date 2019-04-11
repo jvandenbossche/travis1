@@ -1,1 +1,1 @@
-echo "SCRIPT EXECUTION IS WORKING@*$&@)$(&@($&@)($&@)$&"
+echo "SCRIPT EXECUTION IS WORKING"
