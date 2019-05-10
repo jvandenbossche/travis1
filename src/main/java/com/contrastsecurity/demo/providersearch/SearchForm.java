@@ -1,7 +1,7 @@
 package com.contrastsecurity.demo.providersearch;
 
 public class SearchForm {
-    String zipCod;
+    String zipCode;
 
     public String getZipCode() {
         return zipCode;
