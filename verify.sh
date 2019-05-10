@@ -1,4 +1,4 @@
-echo "SCRIPT EXECUTION IS WORKING"
+echo "Contrast"
 CONTRAST_USERNAME=sourabh.katti@contrastsecurity.com
 CONTRAST_URL=https://apptwo.contrastsecurity.com/Contrast
 CONTRAST_SERVICE_KEY=ZAXHB4LTKMH25NQ1
