@@ -14,5 +14,3 @@ API_URL="$CONTRAST_URL/api/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing
 echo $API_URL
 
 curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Authorization:"$CONTRAST_AUTH"
-
-# curl -X GET -H 'API-Key: KpAoBf7Plj71LFl4ihODRX8CgFh8hyO8' -H 'Authorization: c291cmFiaC5rYXR0aUBjb250cmFzdHNlY3VyaXR5LmNvbTpaQVhIQjRMVEtNSDI1TlEx' $API_URL

@@ -3,8 +3,7 @@ jdk:
 - oraclejdk8
 env:
   global:
-    - CONTRAST_MAVEN_USERNAME=sourabh.katti@contrastsecurity.com CONTRAST_MAVEN_ORGUUID=f7ea7169-d4eb-42c4-b32e-5c0ea0ca9733 CONTRAST_MAVEN_TEAMSERVERURL=https://apptwo.contrastsecurity.com/Contrast/ CONTRAST_MAVEN_APIKEY=KpAoBf7Plj71LFl4ihODRX8CgFh8hyO8 CONTRAST_MAVEN_SERVICEKEY=ZAXHB4LTKMH25NQ1 
-script: mvn clean verify -P run-with-contrast
+    script: mvn clean verify -P run-with-contrast
 after_script:
   - echo "after_script start"
   - ./verify.sh
