@@ -1,8 +1,8 @@
-echo "Contrast"
-
+echo "Contrast Verify Step"
 
 API_URL="$CONTRAST_URL/api/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false"
 
-echo $API_URL
+var="$(CONTRAST_OUTPUT=curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Authorization:"$CONTRAST_AUTH" 2>/dev/null)"
+<<<"$var" CONTRAST_OUTPUT -F'"'
 
-curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Authorization:"$CONTRAST_AUTH"
+echo $CONTRAST_OUTPUT
