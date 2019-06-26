@@ -3,7 +3,7 @@ jdk:
 - oraclejdk8
 env:
   global:
-    script: mvn clean verify -P run-with-contrast
+    script: mvn clean verify
 after_script:
   - echo "after_script start"
   - ./verify.sh
