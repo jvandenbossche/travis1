@@ -56,7 +56,7 @@ refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to 
 fi
 
 # Compare High vulnerability threshold
-if [[$HIGH_COUNT" -gt "$CONTRAST_HIGH_COUNT"]]
+if [[ $HIGH_COUNT" -gt "$CONTRAST_HIGH_COUNT"]]
     then
         echo "\n$HIGH_COUNT is greater than the threshold of  $CONTRAST_HIGH_COUNT"
         echo "Failing job because High vulnerability threshold was violated\n"
