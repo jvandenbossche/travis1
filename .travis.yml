@@ -6,4 +6,4 @@ env:
     script: mvn clean verify
 after_script:
   - echo "after_script start"
-  - ./verify.sh
+  - sh ./verify.sh
