@@ -80,7 +80,7 @@ if [ "$LOW_COUNT" -gt "$CONTRAST_LOW_COUNT" ]
 refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"
         exit -1
 fi
-if [ "$NOTE_COUNT" -gt "$CONTRAST_NOTE_COUNT" ]
+if [ $NOTE_COUNT" -gt "$CONTRAST_NOTE_COUNT" ]
     then
         echo "\n$NOTE_COUNT is greater than the threshold of  $CONTRAST_NOTE_COUNT"
         echo "Failing job because Note vulnerability threshold was violated\n"
