@@ -3,11 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.contrastsecurity.demo</groupId>
-	<artifactId>provider-search</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
 	<name>provider-search</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -66,45 +61,6 @@
 	</build>
 
 	<profiles>
-		<profile>
-			<id>run-with-contrast</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.contrastsecurity</groupId>
-						<artifactId>contrast-maven-plugin</artifactId>
-						<version>2.2</version>
-						<executions>
-							<!-- <execution>
-								<id>install-contrast-jar</id>
-								<goals>
-									<goal>install</goal>
-								</goals>
-							</execution> -->
-							<execution>
-								<id>verify-with-contrast</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>verify</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<username>${env.CONTRAST_MAVEN_USERNAME}</username>
-							<apiKey>${env.CONTRAST_MAVEN_APIKEY}</apiKey>
-							<serviceKey>${env.CONTRAST_MAVEN_SERVICEKEY}</serviceKey>
-							<apiUrl>${env.CONTRAST_MAVEN_TEAMSERVERURL}</apiUrl>
-							<orgUuid>${env.CONTRAST_MAVEN_ORGUUID}</orgUuid>
-							<appName>provider-search</appName>
-							<serverName>Sourabhs-MacBook-Pro.local</serverName>
-							<serverPath>/providerServer</serverPath>
-							<minSeverity>Note</minSeverity>
-							<apiUrl>https://apptwo.contrastsecurity.com/Contrast/api</apiUrl>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 	</profiles>
 
 </project>
