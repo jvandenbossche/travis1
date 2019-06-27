@@ -59,7 +59,7 @@ echo "Note count: $NOTE_COUNT"
 # Verify Contrast Thresholds
 
 # Compare Critical vulnerability threshold
-if (($CRIT_COUNT > $CONTRAST_CRITICAL_COUNT)); then
+if (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then
     echo "\n$CRIT_COUNT is greater than the threshold of  $CONTRAST_CRITICAL_COUNT"
     echo "Failing job because Critical vulnerability threshold was violated"
     echo "Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,
@@ -68,28 +68,28 @@ refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to 
 fi
 
 # Compare High vulnerability threshold
-if (($HIGH_COUNT > $CONTRAST_HIGH_COUNT)); then
+if (($HIGH_COUNT>$CONTRAST_HIGH_COUNT)); then
     echo "\n$HIGH_COUNT is greater than the threshold of  $CONTRAST_HIGH_COUNT"
     echo "Failing job because High vulnerability threshold was violated\n"
     echo "Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,
 refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"
     exit 1
 fi
-if (($MED_COUNT > $CONTRAST_MEDIUM_COUNT)); then
+if (($MED_COUNT>$CONTRAST_MEDIUM_COUNT)); then
     echo "\n$MED_COUNT is greater than the threshold of  $CONTRAST_MEDIUM_COUNT"
     echo "Failing job because Medium vulnerability threshold was violated\n"
     echo "Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,
 refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n" || exit 1
     exit -1
 fi
-if (($LOW_COUNT > $CONTRAST_LOW_COUNT)); then
+if (($LOW_COUNT>$CONTRAST_LOW_COUNT)); then
     echo "\n$LOW_COUNT is greater than the threshold of  $CONTRAST_LOW_COUNT"
     echo "Failing job because Low vulnerability threshold was violated\n"
     echo "Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,
 refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"
     exit 1
 fi
-if (($NOTE_COUNT > $CONTRAST_NOTE_COUNT)); then
+if (($NOTE_COUNT>$CONTRAST_NOTE_COUNT)); then
     echo "\n$NOTE_COUNT is greater than the threshold of  $CONTRAST_NOTE_COUNT"
     echo "Failing job because Note vulnerability threshold was violated\n"
     echo "Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,
