@@ -68,7 +68,7 @@ echo "Note count: $NOTE_COUNT"
 #     exit 1
 # fi
 
-if ! [ "$CRIT_COUNT" -gt "$CONTRAST_CRITICAL_COUNT" ] ; then echo "\nCritical count of $CRIT_COUNT is greater than the set threshold of $CONTRAST_CRITICAL_COUNT. \nFailing job because the Critical vulnerability threshold was violated. Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"; exit -1; fi
+if ! [ "$CRIT_COUNT" -gt "$CONTRAST_CRITICAL_COUNT" ] ; then echo "\nCritical count of $CRIT_COUNT is greater than the set threshold of $CONTRAST_CRITICAL_COUNT. \nFailing job because the Critical vulnerability threshold was violated. Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"; exit 1; fi
 
 
 # Compare High vulnerability threshold
