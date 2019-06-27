@@ -75,7 +75,7 @@ if (($HIGH_COUNT>$CONTRAST_HIGH_COUNT)); then
 refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"
     exit 1
 fi
-if (($MED_COUNT >$CONTRAST_MEDIUM_COUNT)); then
+if (($MED_COUNT>$CONTRAST_MEDIUM_COUNT)); then
     echo "\n$MED_COUNT is greater than the threshold of  $CONTRAST_MEDIUM_COUNT"
     echo "Failing job because Medium vulnerability threshold was violated\n"
     echo "Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,
