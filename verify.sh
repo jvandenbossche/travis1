@@ -32,6 +32,7 @@ echo "\nContrast Security found the following severities in this application:\n"
 c1=$(echo "$CONTRAST_OUTPUT" | grep "Critical" -A 2)
 CRIT_COUNT=$(echo "$c1" | grep -Eo '[0-9]{1,3}')
 echo "Critical count: $CRIT_COUNT"
+CRIT_COUNT=$CRIT_COUNT
 
 # Get High vulnerability count
 h1=$(echo "$CONTRAST_OUTPUT" | grep "High" -A 2)
@@ -67,7 +68,7 @@ echo "Note count: $NOTE_COUNT"
 #     exit 1
 # fi
 
-if ! (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then echo "\n$CRIT_COUNT is greater than the threshold of  $CONTRAST_CRITICAL_COUNT. Failing job because Critical vulnerability threshold was violated. Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"; exit 1; fi
+if ! (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then echo "\n$CRIT_COUNT is greater than the threshold of $CONTRAST_CRITICAL_COUNT. \nFailing job because Critical vulnerability threshold was violated. Please check the Contrast UI for the vulnerability details and how to fix them. Once the vulnerabilities are addressed,refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)\n"; exit 1; fi
 
 
 # Compare High vulnerability threshold
