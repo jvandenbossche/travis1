@@ -1,9 +1,0 @@
-language: java
-jdk:
-- oraclejdk8
-env:
-  global:
-    script: mvn clean verify
-after_script:
-  - echo "after_script start"
-  - sh ./verify.sh
