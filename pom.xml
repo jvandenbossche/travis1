@@ -90,15 +90,16 @@
 							</execution>
 						</executions>
 						<configuration>
-							<username>james.vandenbossche@contrastsecurity.com</username>
-							<apiKey>agY87ph58k8A6YKf6WeATQVuXU4lmTVq</apiKey>
-							<serviceKey>4L7WNNGBG52HRA6I</serviceKey>
-							<apiUrl>http://ec2-3-14-248-29.us-east-2.compute.amazonaws.com:8080/Contrast/api</apiUrl>
-							<orgUuid>7f887276-c2ef-4044-9060-caedd547fdbb</orgUuid>
+							<username>${env.CONTRAST_MAVEN_USERNAME}</username>
+							<apiKey>${env.CONTRAST_MAVEN_APIKEY}</apiKey>
+							<serviceKey>${env.CONTRAST_MAVEN_SERVICEKEY}</serviceKey>
+							<apiUrl>${env.CONTRAST_MAVEN_TEAMSERVERURL}</apiUrl>
+							<orgUuid>${env.CONTRAST_MAVEN_ORGUUID}</orgUuid>
 							<appName>provider-search</appName>
 							<serverName>MAC2</serverName>
 							<serverPath>/providerServer</serverPath>
 							<minSeverity>Note</minSeverity>
+							<apiUrl>https://apptwo.contrastsecurity.com/Contrast/api</apiUrl>
 						</configuration>
 					</plugin>
 				</plugins>
