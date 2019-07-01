@@ -65,7 +65,7 @@
 		</plugins>
 	</build>
 
-	<!-- Contrast Security Plugin Tests -->
+	<!-- Contrast Security Plugin Test 2 -->
 	<profiles>
 		<profile>
 			<id>run-with-contrast</id>
