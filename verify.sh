@@ -34,6 +34,8 @@ CONTRAST_OUTPUT=$(curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Autho
 
 echo "CONTRAST API - RESPONSE"
 echo $CONTRAST_OUTPUT
+echo ""
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 
 FAILED_REQUEST=$(echo $CONTRAST_OUTPUT | grep -Eo '[0-9]' -c)
 
