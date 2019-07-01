@@ -65,6 +65,7 @@
 		</plugins>
 	</build>
 
+	<!-- Contrast Security Plugin Tests -->
 	<profiles>
 		<profile>
 			<id>run-with-contrast</id>
@@ -99,7 +100,6 @@
 							<serverName>MAC2</serverName>
 							<serverPath>/providerServer</serverPath>
 							<minSeverity>Note</minSeverity>
-							<apiUrl>https://apptwo.contrastsecurity.com/Contrast/api</apiUrl>
 						</configuration>
 					</plugin>
 				</plugins>
