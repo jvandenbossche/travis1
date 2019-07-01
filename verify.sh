@@ -23,7 +23,7 @@ CONTRAST_CRITICAL_COUNT=1
 CONTRAST_MEDIUM_COUNT=1
 CONTRAST_HIGH_COUNT=1
 CONTRAST_LOW_COUNT=1
-CONTRAST_NOTE_COUNT=1
+CONTRAST_NOTE_COUNT=5
 
 API_URL="$CONTRAST_URL/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false&metadataFilters=%5B%5D"
 
