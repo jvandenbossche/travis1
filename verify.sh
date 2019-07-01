@@ -19,11 +19,19 @@ CONTRAST_APP_ID=$CONTRAST_MAVEN_APPID
 
 
 # SET THRESHOLD MAXIMUMS FOR EACH VULNERABILITY SEVERITY
-CONTRAST_CRITICAL_COUNT=1
+CONTRAST_CRITICAL_COUNT=0
+CONTRAST_HIGH_COUNT=0
 CONTRAST_MEDIUM_COUNT=1
-CONTRAST_HIGH_COUNT=1
 CONTRAST_LOW_COUNT=1
 CONTRAST_NOTE_COUNT=5
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo "Vulnerability Thresholds - If exceeded, the build will be Failed"
+echo "Critical > $CONTRAST_CRITICAL_COUNT"
+echo "High     > $CONTRAST_HIGH_COUNT"
+echo "Medium   > $CONTRAST_MEDIUM_COUNT"
+echo "Low      > $CONTRAST_LOW_COUNT"
+echo "Note     > $CONTRAST_NOTE_COUNT"
+
 
 API_URL="$CONTRAST_URL/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false&metadataFilters=%5B%5D"
 
