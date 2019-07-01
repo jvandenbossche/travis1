@@ -1,4 +1,9 @@
-echo "\nContrast Verify Step"
+echo "\n-------------- JV ---------"
+echo "Contrast - Travis Build Verify Step"
+echo "Contrast Server"
+echo $CONTRAST_MAVEN_USERNAME
+echo $CONTRAST_MAVEN_APIKEY
+exit 1
 
 CONTRAST_URL="https://apptwo.contrastsecurity.com/Contrast"
 CONTRAST_ORG_ID="f7ea7169-d4eb-42c4-b32e-5c0ea0ca9733"
