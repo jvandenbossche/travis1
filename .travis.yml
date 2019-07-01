@@ -6,4 +6,4 @@ env:
     script: mvn clean verify
 after_script:
   - echo "after_script start"
-  - bash ./verify.sh -e || travis_trerminat 1;
+  - bash ./verify.sh -e || travis_terminate 1;
