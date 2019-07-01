@@ -1,13 +1,16 @@
-echo "\n-------------- JV ---------"
+echo ""
+echo "-------------- JV ---------"
 echo "Contrast - Travis Build Verify Step"
 echo "Contrast Server"
 echo $CONTRAST_MAVEN_USERNAME
 echo $CONTRAST_MAVEN_APIKEY
+CONTRAST_API_KEY=$CONTRAST_MAVEN_APIKEY
+echo $CONTRAST_API_KEY
 exit 1
 
 CONTRAST_URL="https://apptwo.contrastsecurity.com/Contrast"
 CONTRAST_ORG_ID="f7ea7169-d4eb-42c4-b32e-5c0ea0ca9733"
-CONTRAST_API_KEY="KpAoBf7Plj71LFl4ihODRX8CgFh8hyO8"
+
 CONTRAST_SERVICE_KEY="ZAXHB4LTKMH25NQ1"
 CONTRAST_AUTH="c291cmFiaC5rYXR0aUBjb250cmFzdHNlY3VyaXR5LmNvbTpaQVhIQjRMVEtNSDI1TlEx"
 CONTRAST_APP_ID="1b2d676a-3357-4ab5-ac68-fffc5006426f"
