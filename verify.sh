@@ -23,7 +23,7 @@ CONTRAST_CRITICAL_COUNT=0
 CONTRAST_HIGH_COUNT=0
 CONTRAST_MEDIUM_COUNT=1
 CONTRAST_LOW_COUNT=1
-CONTRAST_NOTE_COUNT=5
+CONTRAST_NOTE_COUNT=1
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo "Vulnerability Thresholds - If exceeded, the build will be Failed"
 echo "Critical > $CONTRAST_CRITICAL_COUNT"
