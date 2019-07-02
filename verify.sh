@@ -6,7 +6,6 @@ echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 CONTRAST_URL=$TRAVIS_ENV_CONTRAST_TEAMSERVERURL
 CONTRAST_API_KEY=$TRAVIS_ENV_CONTRAST_APIKEY
 CONTRAST_ORG_ID=$TRAVIS_ENV_CONTRAST_ORGUUID
-CONTRAST_SERVICE_KEY=$TRAVIS_ENV_CONTRAST_SERVICEKEY
 CONTRAST_AUTH=$TRAVIS_ENV_CONTRAST_AUTH
 CONTRAST_APP_ID=$TRAVIS_ENV_CONTRAST_APPID
 
@@ -34,6 +33,8 @@ echo "Note     > $CONTRAST_NOTE_COUNT"
 # Construct Contrast Security API URL and execute it
 
 API_URL="$CONTRAST_URL/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false&metadataFilters=%5B%5D"
+
+echo "CONTRAST API CALL : $API_URL"
 
 CONTRAST_OUTPUT=$(curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Authorization:"$CONTRAST_AUTH")
 
