@@ -91,11 +91,11 @@
 							</execution>
 						</executions>
 						<configuration>
-							<username>${env.CONTRAST_MAVEN_USERNAME}</username>
-							<apiKey>${env.CONTRAST_MAVEN_APIKEY}</apiKey>
-							<serviceKey>${env.CONTRAST_MAVEN_SERVICEKEY}</serviceKey>
-							<apiUrl>${env.CONTRAST_MAVEN_TEAMSERVERURL}</apiUrl>
-							<orgUuid>${env.CONTRAST_MAVEN_ORGUUID}</orgUuid>
+							<username>${env.TRAVIS_ENV_CONTRAST_USERNAME}</username>
+							<apiKey>${env.TRAVIS_ENV_CONTRAST_APIKEY}</apiKey>
+							<serviceKey>${env.TRAVIS_ENV_CONTRAST_SERVICEKEY}</serviceKey>
+							<apiUrl>${env.TRAVIS_ENV_CONTRAST_TEAMSERVERURL}</apiUrl>
+							<orgUuid>${env.TRAVIS_ENV_CONTRAST_ORGUUID}</orgUuid>
 							<appName>provider-search</appName>
 							<serverName>MAC2</serverName>
 							<serverPath>/providerServer</serverPath>
