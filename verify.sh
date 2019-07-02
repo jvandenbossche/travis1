@@ -19,7 +19,7 @@ CONTRAST_LOW_COUNT=1
 CONTRAST_NOTE_COUNT=1
 
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "Contrast Security Vulnerability Thresholds"
+echo "Travis Build Vulnerability Thresholds"
 echo "If current open vulnerabilities exceeds thresholds, the build will be failed"
 echo "Critical > $CONTRAST_CRITICAL_COUNT"
 echo "High     > $CONTRAST_HIGH_COUNT"
