@@ -1,31 +1,26 @@
 echo ""
-echo "-------------- JV ---------"
-echo "Contrast - Travis Build Verify Step"
-echo "Contrast Server"
-echo $CONTRAST_MAVEN_USERNAME
-echo $CONTRAST_MAVEN_APIKEY
-echo $CONTRAST_MAVEN_SERVICEKEY
-echo $CONTRAST_MAVEN_TEAMSERVERURL
-echo $CONTRAST_MAVEN_ORGUUID
-echo $CONTRAST_MAVEN_APPID
-echo $CONTRAST_MAVEN_AUTH
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo "Contrast Security - Build Verification"
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 
-CONTRAST_URL=$CONTRAST_MAVEN_TEAMSERVERURL
-CONTRAST_API_KEY=$CONTRAST_MAVEN_APIKEY
-CONTRAST_ORG_ID=$CONTRAST_MAVEN_ORGUUID
-CONTRAST_SERVICE_KEY=$CONTRAST_MAVEN_SERVICEKEY
-CONTRAST_AUTH=$CONTRAST_MAVEN_AUTH
-CONTRAST_APP_ID=$CONTRAST_MAVEN_APPID
+CONTRAST_URL=$TRAVIS_ENV_CONTRAST_TEAMSERVERURL
+CONTRAST_API_KEY=$TRAVIS_ENV_CONTRAST_APIKEY
+CONTRAST_ORG_ID=$TRAVIS_ENV_CONTRAST_ORGUUID
+CONTRAST_SERVICE_KEY=$TRAVIS_ENV_CONTRAST_SERVICEKEY
+CONTRAST_AUTH=$TRAVIS_ENV_CONTRAST_AUTH
+CONTRAST_APP_ID=$TRAVIS_ENV_CONTRAST_APPID
 
-
-# SET THRESHOLD MAXIMUMS FOR EACH VULNERABILITY SEVERITY
+# [  ] USER CONFIGURATION
+# SET THRESHOLD MAXIMUMS FOR EACH VULNERABILITY SEVERITY TYPE
 CONTRAST_CRITICAL_COUNT=0
 CONTRAST_HIGH_COUNT=0
 CONTRAST_MEDIUM_COUNT=1
 CONTRAST_LOW_COUNT=1
 CONTRAST_NOTE_COUNT=1
+
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "Vulnerability Thresholds - If exceeded, the build will be Failed"
+echo "Contrast Security Vulnerability Thresholds"
+echo "If the number of existing open vulnerabilities is exceeded, the build will be Failed"
 echo "Critical > $CONTRAST_CRITICAL_COUNT"
 echo "High     > $CONTRAST_HIGH_COUNT"
 echo "Medium   > $CONTRAST_MEDIUM_COUNT"
@@ -33,33 +28,27 @@ echo "Low      > $CONTRAST_LOW_COUNT"
 echo "Note     > $CONTRAST_NOTE_COUNT"
 
 
-API_URL="$CONTRAST_URL/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false&metadataFilters=%5B%5D"
+##################################################
+# Construct Contrast Security API URL and execute it
 
-echo "CONTRAST API - BASE URL"
-echo $API_URL
+API_URL="$CONTRAST_URL/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false&metadataFilters=%5B%5D"
 
 CONTRAST_OUTPUT=$(curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Authorization:"$CONTRAST_AUTH")
 
-echo "CONTRAST API - RESPONSE"
-echo $CONTRAST_OUTPUT
-echo ""
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-
 FAILED_REQUEST=$(echo $CONTRAST_OUTPUT | grep -Eo '[0-9]' -c)
-
 if [ $FAILED_REQUEST -lt 1 ]
     then
-        echo "Error: Unable to reach the Contrast UI. Please verify the keys and the url are correct"
-        echo "Exiting AND Failing job.."
+        echo "FAILURE >> Unable to reach the Contrast UI. Please verify the keys and the url are correct"
+        echo "FAILURE >> Exiting AND Failing Travis Build.."
         exit 1
 fi
 
 
 ##################################################
-##################################################
 # Capture Number Of Vulnerabilities per app
 
-echo "Contrast Security found the following severities in this application:\n"
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo "Current Open Vulnerabilities for this application in Contrast Security"
 
 # Get Critical vulnerability count
 c1=$(echo "$CONTRAST_OUTPUT" | grep "Critical" -A 2)
@@ -88,9 +77,7 @@ NOTE_COUNT=$(echo "$n1" | grep -Eo '[0-9]{1,4}')
 echo "Note count: $NOTE_COUNT"
 
 ##################################################
-##################################################
 # Verify Contrast Thresholds
-
 
 # Compare Critical vulnerability threshold
 if (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then
@@ -99,7 +86,7 @@ if (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then
      echo "Please check the Contrast UI for the vulnerability details and how to fix them."
      echo "Refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)"
      exit 1
- fi
+fi
 
 # Compare High vulnerability threshold
 if (($HIGH_COUNT>$CONTRAST_HIGH_COUNT)); then
