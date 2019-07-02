@@ -1,6 +1,6 @@
 echo ""
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "Contrast Security - Build Verification"
+echo "Contrast Security - Travis Build Verification"
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 
 CONTRAST_URL=$TRAVIS_ENV_CONTRAST_TEAMSERVERURL
