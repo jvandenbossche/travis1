@@ -1,7 +1,7 @@
 echo ""
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo "Contrast Security - Travis Build Verification"
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+"
 
 CONTRAST_URL=$TRAVIS_ENV_CONTRAST_TEAMSERVERURL
 CONTRAST_API_KEY=$TRAVIS_ENV_CONTRAST_APIKEY
