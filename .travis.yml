@@ -6,4 +6,5 @@ env:
     script: mvn clean verify
 after_script:
   - echo "after_script start"
-  - bash ./verify.sh -e || travis_terminate 1;
+  - curl https://raw.githubusercontent.com/jvandenbossche/ContrastTravisVerify/master/ContrastVerify.sh -o ./ContrastTravisVerify.sh
+  - bash ./ContrastTravisVerify.sh -e || travis_terminate 1;

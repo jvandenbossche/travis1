@@ -1,58 +1,54 @@
 echo ""
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "Contrast Security - Travis Build Verification"
-echo "Version 2019_07_18"
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+"
+echo "-------------- JV -----------"
+echo "Contrast - Travis Build Verify Step"
+echo "Contrast Server"
+echo $CONTRAST_MAVEN_USERNAME
+echo $CONTRAST_MAVEN_APIKEY
+echo $CONTRAST_MAVEN_SERVICEKEY
+echo $CONTRAST_MAVEN_TEAMSERVERURL
+echo $CONTRAST_MAVEN_ORGUUID
+echo $CONTRAST_MAVEN_APPID
+echo $CONTRAST_MAVEN_AUTH
 
-CONTRAST_URL=$TRAVIS_ENV_CONTRAST_TEAMSERVERURL
-CONTRAST_API_KEY=$TRAVIS_ENV_CONTRAST_APIKEY
-CONTRAST_ORG_ID=$TRAVIS_ENV_CONTRAST_ORGUUID
-CONTRAST_AUTH=$TRAVIS_ENV_CONTRAST_AUTH
-CONTRAST_APP_ID=$TRAVIS_ENV_CONTRAST_APPID
+CONTRAST_URL="http://ec2-3-14-248-29.us-east-2.compute.amazonaws.com:8080/Contrast/api"
+CONTRAST_API_KEY="agY87ph58k8A6YKf6WeATQVuXU4lmTVq"
+CONTRAST_ORG_ID="7f887276-c2ef-4044-9060-caedd547fdbb"
+CONTRAST_SERVICE_KEY="L7WNNGBG52HRA6I"
+CONTRAST_AUTH="amFtZXMudmFuZGVuYm9zc2NoZUBjb250cmFzdHNlY3VyaXR5LmNvbTo0TDdXTk5HQkc1MkhSQTZJ"
+CONTRAST_APP_ID="00f1339a-b3e8-4b0f-943b-4b792d531cf0"
 
-echo "Team Server URL: $CONTRAST_URL"
-
-# [  ] USER CONFIGURATIONS
-# SET THRESHOLD MAXIMUMS FOR EACH VULNERABILITY SEVERITY TYPE
-CONTRAST_CRITICAL_COUNT=0
-CONTRAST_HIGH_COUNT=0
+# SET THRESHOLD MAXIMUMS FOR EACH VULNERABILITY SEVERITY
+CONTRAST_CRITICAL_COUNT=1
 CONTRAST_MEDIUM_COUNT=1
+CONTRAST_HIGH_COUNT=1
 CONTRAST_LOW_COUNT=1
-CONTRAST_NOTE_COUNT=3
-
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "IBM Travis Build Vulnerability Threshold Settings"
-echo "If current open vulnerabilities exceeds thresholds, the build will be failed"
-echo "Critical > $CONTRAST_CRITICAL_COUNT"
-echo "High     > $CONTRAST_HIGH_COUNT"
-echo "Medium   > $CONTRAST_MEDIUM_COUNT"
-echo "Low      > $CONTRAST_LOW_COUNT"
-echo "Note     > $CONTRAST_NOTE_COUNT"
-
-
-##################################################
-# Construct Contrast Security API URL and execute it
+CONTRAST_NOTE_COUNT=1
 
 API_URL="$CONTRAST_URL/ng/$CONTRAST_ORG_ID/orgtraces/filter/severity/listing?expand=skip_links&quickFilter=OPEN&modules=$CONTRAST_APP_ID&tracked=false&untracked=false&metadataFilters=%5B%5D"
 
-echo "CONTRAST API CALL : $API_URL"
+echo "CONTRAST API - BASE URL"
+echo $API_URL
 
 CONTRAST_OUTPUT=$(curl -X GET "$API_URL" -H API-Key:"$CONTRAST_API_KEY" -H Authorization:"$CONTRAST_AUTH")
 
+echo "CONTRAST API - RESPONSE"
+echo $CONTRAST_OUTPUT
+
 FAILED_REQUEST=$(echo $CONTRAST_OUTPUT | grep -Eo '[0-9]' -c)
+
 if [ $FAILED_REQUEST -lt 1 ]
     then
-        echo "FAILURE >> Unable to reach the Contrast UI. Please verify the keys and the url are correct"
-        echo "FAILURE >> Exiting AND Failing Travis Build.."
+        echo "Error: Unable to reach the Contrast UI. Please verify the keys and the url are correct"
+        echo "Exiting AND Failing job.."
         exit 1
 fi
 
 
 ##################################################
+##################################################
 # Capture Number Of Vulnerabilities per app
 
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "Current Open Vulnerabilities for this application in Contrast Security"
+echo "Contrast Security found the following severities in this application:\n"
 
 # Get Critical vulnerability count
 c1=$(echo "$CONTRAST_OUTPUT" | grep "Critical" -A 2)
@@ -81,7 +77,9 @@ NOTE_COUNT=$(echo "$n1" | grep -Eo '[0-9]{1,4}')
 echo "Note count: $NOTE_COUNT"
 
 ##################################################
+##################################################
 # Verify Contrast Thresholds
+
 
 # Compare Critical vulnerability threshold
 if (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then
@@ -90,7 +88,7 @@ if (($CRIT_COUNT>$CONTRAST_CRITICAL_COUNT)); then
      echo "Please check the Contrast UI for the vulnerability details and how to fix them."
      echo "Refer to https://docs.contrastsecurity.com/user-vulns.html#analyze for steps to set the vulnerability status to closed (Remediated or Not a Problem)"
      exit 1
-fi
+ fi
 
 # Compare High vulnerability threshold
 if (($HIGH_COUNT>$CONTRAST_HIGH_COUNT)); then
