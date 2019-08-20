@@ -1,7 +1,7 @@
 echo ""
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo "Contrast Security - Travis Build Verification"
-echo "Version 2019_07_18"
+echo "PlugIn Integration - Version 2019_08_20"
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+"
 
 CONTRAST_URL=$TRAVIS_ENV_CONTRAST_TEAMSERVERURL
@@ -12,13 +12,14 @@ CONTRAST_APP_ID=$TRAVIS_ENV_CONTRAST_APPID
 
 echo "Team Server URL: $CONTRAST_URL"
 
-# [  ] USER CONFIGURATIONS
 # SET THRESHOLD MAXIMUMS FOR EACH VULNERABILITY SEVERITY TYPE
 CONTRAST_CRITICAL_COUNT=0
 CONTRAST_HIGH_COUNT=0
-CONTRAST_MEDIUM_COUNT=1
-CONTRAST_LOW_COUNT=1
-CONTRAST_NOTE_COUNT=3
+CONTRAST_MEDIUM_COUNT=0
+CONTRAST_LOW_COUNT=0
+CONTRAST_NOTE_COUNT=0
+
+# IMPORT SETTINGS FROM "ContrastTravis.conf"
 
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo "IBM Travis Build Vulnerability Threshold Settings"
