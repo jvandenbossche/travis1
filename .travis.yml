@@ -4,8 +4,9 @@ jdk:
 - oraclejdk8
 env:
   global:
-    script: mvn clean verify
+    script: mvn install -P run-with-contrast
 after_script:
   - echo "after_script start"
   - curl https://raw.githubusercontent.com/jvandenbossche/ContrastTravisVerify/master/ContrastTravisVerify.sh -o ./ContrastTravisVerify.sh
+  - bash sleep 60
   - bash ./ContrastTravisVerify.sh -e || travis_terminate 1;
