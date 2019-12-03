@@ -96,8 +96,8 @@
 							<serviceKey>${env.TRAVIS_ENV_CONTRAST_SERVICEKEY}</serviceKey>
 							<apiUrl>${env.TRAVIS_ENV_CONTRAST_TEAMSERVERURL}</apiUrl>
 							<orgUuid>${env.TRAVIS_ENV_CONTRAST_ORGUUID}</orgUuid>
-							<appName>provider-search</appName>
-							<serverName>MAC2</serverName>
+							<appName>ProviderSearch</appName>
+							<serverName>TravisBuildServer</serverName>
 							<serverPath>/providerServer</serverPath>
 							<minSeverity>Note</minSeverity>
 						</configuration>
